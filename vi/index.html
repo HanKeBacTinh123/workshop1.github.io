@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.131.0">
@@ -12,21 +12,21 @@
     <title>Triển khai mô hình mạng Shared Services với Transit Gateway :: Triển khai mô hình mạng với Transit Gateway</title>
 
     
-    <link href="../css/nucleus.css?1724184337" rel="stylesheet">
-    <link href="../css/fontawesome-all.min.css?1724184337" rel="stylesheet">
-    <link href="../css/hybrid.css?1724184337" rel="stylesheet">
-    <link href="../css/featherlight.min.css?1724184337" rel="stylesheet">
-    <link href="../css/perfect-scrollbar.min.css?1724184337" rel="stylesheet">
-    <link href="../css/auto-complete.css?1724184337" rel="stylesheet">
-    <link href="../css/atom-one-dark-reasonable.css?1724184337" rel="stylesheet">
-    <link href="../css/theme.css?1724184337" rel="stylesheet">
-    <link href="../css/hugo-theme.css?1724184337" rel="stylesheet">
+    <link href="../css/nucleus.css?1724185930" rel="stylesheet">
+    <link href="../css/fontawesome-all.min.css?1724185930" rel="stylesheet">
+    <link href="../css/hybrid.css?1724185930" rel="stylesheet">
+    <link href="../css/featherlight.min.css?1724185930" rel="stylesheet">
+    <link href="../css/perfect-scrollbar.min.css?1724185930" rel="stylesheet">
+    <link href="../css/auto-complete.css?1724185930" rel="stylesheet">
+    <link href="../css/atom-one-dark-reasonable.css?1724185930" rel="stylesheet">
+    <link href="../css/theme.css?1724185930" rel="stylesheet">
+    <link href="../css/hugo-theme.css?1724185930" rel="stylesheet">
     
-    <link href="../css/theme-workshop.css?1724184337" rel="stylesheet">
+    <link href="../css/theme-workshop.css?1724185930" rel="stylesheet">
     
     
 
-    <script src="../js/jquery-3.3.1.min.js?1724184337"></script>
+    <script src="../js/jquery-3.3.1.min.js?1724185930"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../js/lunr.min.js?1724184337"></script>
-<script type="text/javascript" src="../js/auto-complete.js?1724184337"></script>
+<script type="text/javascript" src="../js/lunr.min.js?1724185930"></script>
+<script type="text/javascript" src="../js/auto-complete.js?1724185930"></script>
 <script type="text/javascript">
     
-        var baseurl = "\/\/localhost:1313\/\/vi";
+        var baseurl = "\/\/vi";
     
 </script>
-<script type="text/javascript" src="../js/search.js?1724184337"></script>
+<script type="text/javascript" src="../js/search.js?1724185930"></script>
 
     
   </div>
@@ -259,13 +259,12 @@
 </span>
 
  
-<h1 id="triển-khai-mô-hình-mạng-với-transit-gateway">Triển khai mô hình mạng với Transit Gateway</h1>
+<h1 id="triển-khai-mô-hình-mạng-shared-services-với-transit-gateway">Triển khai mô hình mạng Shared Services với Transit Gateway</h1>
 <h4 id="tổng-quan">Tổng quan</h4>
 <p>Ở bài thực hành <a href="https://000020.awsstudygroup.com/vi/">Thiết lâp AWS Transit Gateway</a>, ta đã tiến hành việc triển khai mô hình mạng đơn giản trên AWS Cloud với <strong>Transit Gateway</strong> nhằm đảm bảo khả năng kết nối giữa các VPC với nhau.</p>
-<p>Tuy nhiên, trong thực tế, có những lúc chúng ta không muốn các VPC kết nối trực tiếp với nhau mà chúng chỉ cần kết nối tới “Shared Services VPC”. Trong bài lab này, theo kiến trúc mạng, VPC A sẽ đóng vai trò là “Shared Services” và VPC B, VPC C sẽ không thể giao tiếp với nhau nhưng đều có thể giao tiếp với với các dịch vụ chung (shared services) trong VPC A.</p>
+<p>Tuy nhiên, trong thực tế, có những lúc chúng ta không muốn các VPC kết nối trực tiếp với nhau mà chúng chỉ cần kết nối tới “Shared Services VPC”. Trong bài lab này, theo kiến trúc mạng, VPC A sẽ đóng vai trò là “Shared Services” và VPC B, VPC C sẽ không thể giao tiếp với nhau nhưng đều có thể giao tiếp với với các dịch vụ chung (shared services) trong VPC A. Thêm vào đó, chúng ta cũng sẽ triển khai <strong>VPN Connection</strong> từ phía khách hàng On Premises đến với <strong>Transit Gateway</strong> để giao tiếp với các VPC.</p>
 <p>Kiến trúc mạng đươc triển khai:</p>
 <p><img alt="alt text" src="../Workshop1.drawio.png"></p>
-<p>Thêm vào đó, chúng ta cũng sẽ triển khai <strong>VPN Connection</strong> từ phía khách hàng On Premises đến với <strong>Transit Gateway</strong> để giao tiếp với các VPC.</p>
 <h4 id="aws-transit-gateway-aws-tgw">AWS Transit Gateway (AWS TGW)</h4>
 <p><strong>AWS Transite Gateway</strong> được dùng để kết nối các VPC và mạng On-premises thông qua một hub trung tâm. Điều này đơn giản hoá mạng và kết thúc các mối quan hệ định tuyến phức tạp. Nó hoạt động như một cloud router - mỗi kết nối mới chỉ thực hiện 1 lần.</p>
 <h4 id="aws-transit-gateway-attachment">AWS Transit Gateway Attachment</h4>
@@ -398,19 +397,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../js/clipboard.min.js?1724184337"></script>
-    <script src="../js/perfect-scrollbar.min.js?1724184337"></script>
-    <script src="../js/perfect-scrollbar.jquery.min.js?1724184337"></script>
-    <script src="../js/jquery.sticky.js?1724184337"></script>
-    <script src="../js/featherlight.min.js?1724184337"></script>
-    <script src="../js/highlight.pack.js?1724184337"></script>
+    <script src="../js/clipboard.min.js?1724185930"></script>
+    <script src="../js/perfect-scrollbar.min.js?1724185930"></script>
+    <script src="../js/perfect-scrollbar.jquery.min.js?1724185930"></script>
+    <script src="../js/jquery.sticky.js?1724185930"></script>
+    <script src="../js/featherlight.min.js?1724185930"></script>
+    <script src="../js/highlight.pack.js?1724185930"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../js/modernizr.custom-3.6.0.js?1724184337"></script>
-    <script src="../js/learn.js?1724184337"></script>
-    <script src="../js/hugo-learn.js?1724184337"></script>
+    <script src="../js/modernizr.custom-3.6.0.js?1724185930"></script>
+    <script src="../js/learn.js?1724185930"></script>
+    <script src="../js/hugo-learn.js?1724185930"></script>
 
-    <link href="../mermaid/mermaid.css?1724184337" rel="stylesheet" />
-    <script src="../mermaid/mermaid.js?1724184337"></script>
+    <link href="../mermaid/mermaid.css?1724185930" rel="stylesheet" />
+    <script src="../mermaid/mermaid.js?1724185930"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
